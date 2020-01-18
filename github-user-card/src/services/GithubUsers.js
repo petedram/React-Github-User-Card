@@ -6,12 +6,17 @@ export function fetchUsers (){
     // let previousMonth = new Date();
     // previousMonth.setMonth(previousMonth.getMonth() - 1);
   
-    return fetch(
-      'https://api.github.com/users/petedram'
-    )
-      .then(res => res.json())
-      .catch(err => console.log(err));
-  };
+    return (
+    axios.get("https://api.github.com/users/petedram")
+    // .then(response => {
+    //     console.log(response.data);
+    // })
+    .catch(error => {
+        console.log("server error", error);
+    })
+    );
+};
+
 
 
 

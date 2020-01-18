@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 
 import { fetchUsers } from '../services/GithubUsers';
 
 class CardContainer extends Component {
     state = {
-        users: []
+        login:  '',
+        public_repos: ''
     };
 
     componentDidMount = () => {
         fetchUsers().then(json => {
-            console;
-            this.setState({ users: json.features });
+            console.log('from container', json.data);
+            this.setState({ 
+                login:json.data.login,
+                public_repos: json.data.public_repos
+            });
         });
     };
 
@@ -19,9 +22,13 @@ class CardContainer extends Component {
     render(){
         return (
             <div>
-                <h1>{this.state.users}</h1>
+                <h1>User: {this.state.login}</h1>
+                <h1>Public Repos: {this.state.public_repos}</h1>
+
             </div>
         );
     }
 
 }
+
+export default CardContainer;
