@@ -17,6 +17,18 @@ export function fetchUsers (){
     );
 };
 
+export function fetchFollowers(){
+    return (
+        axios.get("    https://api.github.com/users/petedram/followers")
+        // .then(response => {
+        //     console.log(response.data);
+        // })
+        .catch(error => {
+            console.log("server error", error);
+        })
+        );
+};
+
 
 
 
